@@ -1,20 +1,13 @@
-require 'sinatra'
-require 'sinatra/contrib'
+# frozen_string_literal: true
 
-require 'sinatra/reloader' if ENV['RACK_ENV'] == 'development'
+require 'sinatra'
+require 'json'
+
 require 'pry' if %w[development test].include? ENV['RACK_ENV']
 
+# app for testing puma reloader
 class App < Sinatra::Base
-
-  helpers Sinatra::JSON
-  register Sinatra::Namespace
-  configure :development do
-    register Sinatra::Reloader
-  end
-
-  namespace '/api/v1' do
-    get '/hello' do
-      json message: 'Hello There!!!'
-    end
+  get '/ping' do
+    JSON.generate({ message: 'pong pong' })
   end
 end

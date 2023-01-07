@@ -1,0 +1,11 @@
+AllCops:
+  TargetRubyVersion: 2.7
+  DisplayCopNames: true
+  SuggestExtensions: false
+  NewCops: enable
+
+Metrics/BlockLength:
+  AllowedMethods: ['describe', 'context']
+
+Metrics/MethodLength:
+  Max: 30

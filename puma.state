@@ -1,0 +1,5 @@
+---
+pid: 97961
+control_url: unix:///var/folders/wk/ynrplxcx18q4q572ld4rx0zc0000gn/T/puma-status-1673115810348-97961
+control_auth_token: none
+running_from: "/Users/tbeauvais/dev/sinatra_test"
