@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/tbeauvais/puma-redeploy
+  revision: 1dcddba3a67bac9c092b0f257681e2de753efd87
+  specs:
+    puma-redeploy (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -17,8 +23,6 @@ GEM
       method_source (~> 0.9.0)
     puma (5.6.5)
       nio4r (~> 2.0)
-    puma-redeploy (0.1.0)
-      puma (>= 5.6.0, < 7)
     rack (2.2.5)
     rack-protection (3.0.5)
       rack
@@ -68,7 +72,7 @@ PLATFORMS
 DEPENDENCIES
   pry (~> 0.12.2)
   puma (~> 5.6, >= 5.6.5)
-  puma-redeploy
+  puma-redeploy!
   rack-test (~> 1.1)
   rspec (~> 3.9)
   rubocop (~> 1.42)
