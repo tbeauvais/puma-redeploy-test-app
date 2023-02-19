@@ -1,8 +1,9 @@
 GIT
   remote: https://github.com/tbeauvais/puma-redeploy
-  revision: 1dcddba3a67bac9c092b0f257681e2de753efd87
+  revision: 618cc6ec4f8369bb427c1f78924d3b585de798e4
   specs:
     puma-redeploy (0.1.0)
+      rubyzip (>= 2.3, <= 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -16,7 +17,7 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.8)
     parallel (1.22.1)
-    parser (3.1.3.0)
+    parser (3.2.0.0)
       ast (~> 2.4.1)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -29,6 +30,7 @@ GEM
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rainbow (3.1.1)
+    rake (13.0.6)
     regexp_parser (2.6.1)
     rexml (3.2.5)
     rspec (3.12.0)
@@ -37,46 +39,48 @@ GEM
       rspec-mocks (~> 3.12.0)
     rspec-core (3.12.0)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.1)
+    rspec-expectations (3.12.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.1)
+    rspec-mocks (3.12.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.0)
-    rubocop (1.42.0)
+    rubocop (1.43.0)
       json (~> 2.3)
       parallel (~> 1.10)
-      parser (>= 3.1.2.1)
+      parser (>= 3.2.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
       rubocop-ast (>= 1.24.1, < 2.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 3.0)
+      unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.24.1)
       parser (>= 3.1.1.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
     sinatra (3.0.5)
       mustermann (~> 3.0)
       rack (~> 2.2, >= 2.2.4)
       rack-protection (= 3.0.5)
       tilt (~> 2.0)
     tilt (2.0.11)
-    unicode-display_width (2.3.0)
+    unicode-display_width (2.4.2)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-20
 
 DEPENDENCIES
   pry (~> 0.12.2)
   puma (~> 5.6, >= 5.6.5)
   puma-redeploy!
   rack-test (~> 1.1)
+  rake (~> 13.0, >= 13.0.6)
   rspec (~> 3.9)
   rubocop (~> 1.42)
   sinatra (~> 3.0, >= 3.0.5)
 
 BUNDLED WITH
-   2.1.4
+   2.3.7
