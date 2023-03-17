@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'puma', '~> 6.1', '>= 6.1.1'
-gem 'puma-redeploy', git: 'https://github.com/tbeauvais/puma-redeploy' # , branch: 'deploy_archive'
+gem 'puma-redeploy', git: 'https://github.com/tbeauvais/puma-redeploy.git' # , branch: 'deploy_archive'
 gem 'rubocop', '~> 1.42'
 gem 'sinatra', '~> 3.0', '>= 3.0.5'
 

@@ -24,6 +24,9 @@ activate_control_app 'auto', { no_token: true }
 
 prune_bundler true
 
+# Needed when using puma-redeploy from a git reference in Gemfile
+extra_runtime_dependencies 'puma-redeploy'
+
 plugin :redeploy
 
 redeploy_watch_file './watch_me'
