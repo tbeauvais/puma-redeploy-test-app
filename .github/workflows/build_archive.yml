@@ -11,8 +11,11 @@ jobs:
       volumes:
         - my_docker_volume:/build/pkg
       steps:
-      - run: echo hello
-      - uses: actions/upload-artifact@v3
+      -
+        run: echo hello
+      -
+        name: Upload
+        uses: actions/upload-artifact@v3
         with:
-        name: my-artifact
-        path: build/pkg/my_application_0.0.1.zip
+          name: my-artifact
+          path: build/pkg/my_application_0.0.1.zip
