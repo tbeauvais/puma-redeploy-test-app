@@ -6,15 +6,11 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    container:
-      image: tbeauvais/archive-builder:latest
-      volumes:
-        - /build/pkg:/build/pkg
     steps:
       -
-        run: pwd
+        run: docker run -v build/pkg:/build/pkg tbeauvais/archive-builder:latest
       -
-        run: ls -la ..
+        run: ls -la 
       -
         name: Upload
         uses: actions/upload-artifact@v3
