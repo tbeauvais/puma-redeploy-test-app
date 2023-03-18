@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        run: docker run -v build/pkg:/build/pkg tbeauvais/archive-builder:latest
+        run: docker run -v build_pkg:/build/pkg tbeauvais/archive-builder:latest
       -
-        run: ls -la 
+        run: ls -la
       -
         name: Upload
         uses: actions/upload-artifact@v3
