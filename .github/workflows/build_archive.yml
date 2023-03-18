@@ -12,6 +12,8 @@ jobs:
         - /build/pkg:/build/pkg
     steps:
       -
+        run: pwd
+      -
         run: ls -la
       -
         name: Upload
