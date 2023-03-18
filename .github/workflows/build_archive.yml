@@ -6,16 +6,16 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    container:
-      image: tbeauvais/archive-builder:latest
-      volumes:
-        - my_docker_volume:/build/pkg
     steps:
       -
-        run: echo hello
+        run: docker run -v ${{ github.workspace }}:/build/pkg tbeauvais/archive-builder:latest
+      -
+        run: pwd
+      -
+        run: ls -la
       -
         name: Upload
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: build/pkg/my_application_0.0.1.zip
+          path: ${{ github.workspace }}/my_application_0.0.1.zip
