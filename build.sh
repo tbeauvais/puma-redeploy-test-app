@@ -12,4 +12,4 @@ bundle
 
 bundle exec rake build_archive
 
-cp ./pkg/my_application_0.0.1.zip ../pkg/my_application_0.0.1.zip
+cp ./pkg/my_application_0.0.1.zip /build/pkg/my_application_0.0.1.zip

@@ -34,5 +34,5 @@ task build_archive: %w[pkg bundle_gems] do
   # Use the `zip` command to create the archive
   sh "zip -r #{archive_name} #{files_to_include.join(' ')}"
 
-  sh 'bundle config unset BUNDLE_DEPLOYMENT'
+  # sh 'bundle config unset BUNDLE_DEPLOYMENT'
 end
