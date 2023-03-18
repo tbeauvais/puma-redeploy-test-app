@@ -9,7 +9,7 @@ jobs:
     container:
       image: tbeauvais/archive-builder:latest
       volumes:
-        - ./:/build/pkg
+        - /build/pkg:/build/pkg
     steps:
       -
         run: ls -la
