@@ -1,0 +1,17 @@
+name: Build Application Archive
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    container:
+      image: tbeauvais/archive-builder:latest
+      volumes:
+        - my_docker_volume:/build/pkg
+      steps:
+      - uses: actions/upload-artifact@v3
+        with:
+        name: my-artifact
+        path: build/pkg/my_application_0.0.1.zip
