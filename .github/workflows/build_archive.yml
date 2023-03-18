@@ -18,4 +18,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: /build/pkg/my_application_0.0.1.zip
+          path: ${{ github.workspace }}/my_application_0.0.1.zip
