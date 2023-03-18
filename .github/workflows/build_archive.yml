@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        run: docker run -v build_pkg:/build/pkg tbeauvais/archive-builder:latest
+        run: docker run -v ${{ github.workspace }}:/build/pkg tbeauvais/archive-builder:latest
+      -
+        run: pwd
       -
         run: ls -la
       -
