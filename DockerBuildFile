@@ -1,0 +1,22 @@
+# build-time image
+FROM ruby:3.2.1-alpine3.17
+
+ENV WORKDIR="/opt/ruby"
+
+# Libraries required for build-time. Note - If we need nokogiri we will need to add libxml2 to runtime as well
+RUN apk update && apk --no-cache add make libxml2 libxslt-dev g++ openssl openssl-dev git zip
+
+ENV APP_HOME /build
+
+RUN mkdir $APP_HOME
+
+RUN mkdir $APP_HOME/pkg
+
+COPY build.sh $APP_HOME
+
+WORKDIR $APP_HOME
+
+RUN chmod +x ./build.sh
+
+#ENTRYPOINT ["./build.sh"]
+CMD ["./build.sh"]
