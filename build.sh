@@ -1,12 +1,9 @@
 #!/bin/ash
 
-echo 'branch !!!!'
-echo "$BRANCH_NAME"
+git clone --depth 1 -b "$BRANCH_NAME" --single-branch https://github.com/"$REPO_NAME".git "$ARCHIVE_NAME"
 
-
-git clone --depth 1 -b $BRANCH_NAME --single-branch https://github.com/$REPO_NAME.git
-
-cd sinatra-api-base
+# shellcheck disable=SC2164
+cd "$ARCHIVE_NAME"
 
 bundle config timeout 30
 bundle config deployment 'true'
@@ -15,6 +12,7 @@ bundle config retry 4
 echo 'repo !!!!'
 echo "$REPO_NAME"
 
-rake build_archive['sample_app']
+# shellcheck disable=SC2016
+rake build_archive['$ARCHIVE_NAME']
 
-cp ./pkg/sample_app_*.zip /build/pkg/
+cp ./pkg/"$ARCHIVE_NAME_"*.zip /build/pkg/
