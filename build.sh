@@ -1,6 +1,6 @@
 #!/bin/ash
 
-git clone --depth 1 https://github.com/tbeauvais/sinatra-api-base.git
+git clone --depth 1 https://github.com/$REPO_NAME.git
 
 cd sinatra-api-base
 
@@ -9,7 +9,7 @@ bundle config deployment 'true'
 bundle config retry 4
 
 echo 'repo !!!!'
-echo $REPO
+echo "$REPO_NAME"
 
 rake build_archive
 
