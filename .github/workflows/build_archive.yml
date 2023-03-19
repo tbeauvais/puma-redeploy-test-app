@@ -3,17 +3,20 @@ name: Build Application Archive
 
 on:
   workflow_dispatch:
+    inputs:
+      archive_name:
+        description: 'The archive name. This must be a valid file prefix.'
+        required: true
+        default: 'test_app'
 
 jobs:
   build-artifact:
     runs-on: ubuntu-latest
     steps:
       -
-        run: echo ${{ github.repository }}
-      -
         run: mkdir pkg
       -
-        run: docker run -e REPO_NAME=${{ github.repository }} -v ${{ github.workspace }}/pkg:/build/pkg tbeauvais/archive-builder:latest
+        run: docker run -e ARCHIVE_NAME=${{ inputs.archive_name }} -e BRANCH_NAME=${{ github.ref_name }} -e REPO_NAME=${{ github.repository }} -v ${{ github.workspace }}/pkg:/build/pkg tbeauvais/archive-builder:latest
       -
         name: Upload
         uses: actions/upload-artifact@v3
