@@ -11,6 +11,7 @@ bundle config retry 4
 echo 'repo !!!!'
 echo "$REPO_NAME"
 
-rake build_archive
 
-cp ./pkg/my_application_0.0.1.zip /build/pkg/my_application_0.0.1.zip
+rake build_archive['sample_app']
+
+cp ./pkg/sample_app_*.zip /build/pkg/
