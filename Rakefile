@@ -21,11 +21,11 @@ task :bundle_gems do
 end
 
 desc 'Build the application archive'
-task build_archive: %w[pkg bundle_gems] do
+task :build_archive, [:archive_name] %w[pkg bundle_gems] do |_, args|
   version = File.read('VERSION').strip
   puts "version '#{version}'"
   # Set the name of the archive file
-  archive_name = "pkg/my_application_#{version}.zip"
+  archive_name = "pkg/#{args[:archive_name]}_#{version}.zip"
 
   # Create an array of the files and directories to include in the archive
   files_to_include = %w[app.rb VERSION watch_me config/ vendor/bundle/ config.ru .ruby-version Gemfile Gemfile.lock
