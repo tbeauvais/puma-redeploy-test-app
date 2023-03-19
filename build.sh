@@ -8,9 +8,9 @@ bundle config timeout 30
 bundle config deployment 'true'
 bundle config retry 4
 
-#bundle
+echo 'repo !!!!'
+echo $REPO
 
-#bundle exec rake build_archive
 rake build_archive
 
 cp ./pkg/my_application_0.0.1.zip /build/pkg/my_application_0.0.1.zip

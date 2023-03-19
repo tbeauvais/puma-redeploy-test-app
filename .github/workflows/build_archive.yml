@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        run: docker run -v ${{ github.workspace }}:/build/pkg tbeauvais/archive-builder:latest
+        run: docker run -e REPO=${{ github.repository }} -v ${{ github.workspace }}:/build/pkg tbeauvais/archive-builder:latest
       -
         name: Upload
         uses: actions/upload-artifact@v3
