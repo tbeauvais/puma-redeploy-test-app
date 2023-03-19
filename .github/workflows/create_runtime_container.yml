@@ -1,5 +1,5 @@
 name: Build Application Runtime Container
-description: This action builds the image for running the application in Docker, and pushes it to Docker Hub.
+# This action builds the image for running the application in Docker, and pushes it to Docker Hub.
 
 on:
   workflow_dispatch:
