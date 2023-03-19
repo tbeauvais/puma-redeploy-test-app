@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        run: echo ${{ github.repository }}
+      -
         run: docker run -e REPO=${{ github.repository }} -v ${{ github.workspace }}:/build/pkg tbeauvais/archive-builder:latest
       -
         name: Upload
