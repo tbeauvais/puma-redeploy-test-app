@@ -3,7 +3,7 @@ FROM ruby:3.2.1-alpine3.17
 
 ENV WORKDIR="/opt/ruby"
 
-# Libraries required for build-time. Note - If we need nokogiri we will need to add libxml2 to runtime as well
+# Libraries required for build-time.
 RUN apk update && apk --no-cache add make libxml2 libxslt-dev g++ openssl openssl-dev git zip
 
 ENV APP_HOME /build
@@ -17,6 +17,8 @@ COPY build.sh $APP_HOME
 WORKDIR $APP_HOME
 
 RUN chmod +x ./build.sh
+
+RUN gem install rake
 
 #ENTRYPOINT ["./build.sh"]
 CMD ["./build.sh"]

@@ -5,14 +5,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  docker:
+  build-artifact:
     runs-on: ubuntu-latest
     steps:
       -
-        run: docker run -v ${{ github.workspace }}:/build/pkg tbeauvais/archive-builder:latest
+        run: echo ${{ github.repository }}
+      -
+        run: mkdir pkg
+      -
+        run: docker run -e REPO_NAME=${{ github.repository }} -v ${{ github.workspace }}/pkg:/build/pkg tbeauvais/archive-builder:latest
       -
         name: Upload
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
-          path: ${{ github.workspace }}/my_application_0.0.1.zip
+          name: application-artifact
+          path: ${{ github.workspace }}/pkg
