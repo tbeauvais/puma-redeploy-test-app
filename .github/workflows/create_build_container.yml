@@ -1,5 +1,5 @@
 name: Create Build Archive Container
-description: This action builds the image for running the application archiver in Docker, and pushes it to Docker Hub.
+# This action builds the image for running the application archiver in Docker, and pushes it to Docker Hub.
 
 on:
   workflow_dispatch:

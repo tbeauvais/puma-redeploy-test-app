@@ -1,5 +1,5 @@
 name: Build Application Archive
-description: This action builds the application archive and uploads the artifact to Github.
+# This action builds the application archive and uploads the artifact to Github.
 
 on:
   workflow_dispatch:
