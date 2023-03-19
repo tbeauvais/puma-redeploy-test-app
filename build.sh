@@ -1,6 +1,10 @@
 #!/bin/ash
 
-git clone --depth 1 https://github.com/$REPO_NAME.git
+echo 'branch !!!!'
+echo "$BRANCH_NAME"
+
+
+git clone --depth 1 -b $BRANCH_NAME --single-branch https://github.com/$REPO_NAME.git
 
 cd sinatra-api-base
 

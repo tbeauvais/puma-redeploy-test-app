@@ -11,9 +11,11 @@ jobs:
       -
         run: echo ${{ github.repository }}
       -
+        run: echo ${{ github.ref_name }}
+      -
         run: mkdir pkg
       -
-        run: docker run -e REPO_NAME=${{ github.repository }} -v ${{ github.workspace }}/pkg:/build/pkg tbeauvais/archive-builder:latest
+        run: docker run -e BRANCH_NAME=${{ github.ref_name }} -e REPO_NAME=${{ github.repository }} -v ${{ github.workspace }}/pkg:/build/pkg tbeauvais/archive-builder:latest
       -
         name: Upload
         uses: actions/upload-artifact@v3
