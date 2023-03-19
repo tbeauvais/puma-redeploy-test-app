@@ -1,4 +1,5 @@
 name: Build Application Archive
+description: This action builds the application archive and uploads the artifact to Github.
 
 on:
   workflow_dispatch:
@@ -9,10 +10,6 @@ jobs:
     steps:
       -
         run: docker run -v ${{ github.workspace }}:/build/pkg tbeauvais/archive-builder:latest
-      -
-        run: pwd
-      -
-        run: ls -la
       -
         name: Upload
         uses: actions/upload-artifact@v3

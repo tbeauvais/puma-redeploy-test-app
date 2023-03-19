@@ -1,4 +1,5 @@
-name: Create Build Container
+name: Create Build Archive Container
+description: This action builds the image for running the application archiver in Docker, and pushes it to Docker Hub.
 
 on:
   workflow_dispatch:
@@ -27,4 +28,4 @@ jobs:
           file: ./DockerBuildFile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/archive-builder:latest
-          outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=App build image
+          outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=Image used to build application archive.
