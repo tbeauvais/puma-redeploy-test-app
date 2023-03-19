@@ -11,6 +11,7 @@ bundle config retry 4
 echo 'repo !!!!'
 echo "$REPO_NAME"
 
+
 rake build_archive['sample_app']
 
 cp ./pkg/sample_app_*.zip /build/pkg/
