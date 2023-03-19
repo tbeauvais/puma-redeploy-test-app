@@ -18,5 +18,7 @@ WORKDIR $APP_HOME
 
 RUN chmod +x ./build.sh
 
+RUN gem install rake
+
 #ENTRYPOINT ["./build.sh"]
 CMD ["./build.sh"]
