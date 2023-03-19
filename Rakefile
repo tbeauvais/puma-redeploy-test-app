@@ -21,7 +21,7 @@ task :bundle_gems do
 end
 
 desc 'Build the application archive'
-task :build_archive, [:archive_name] %w[pkg bundle_gems] do |_, args|
+task :build_archive, [:archive_name], %w[pkg bundle_gems] do |_, args|
   version = File.read('VERSION').strip
   puts "version '#{version}'"
   # Set the name of the archive file
