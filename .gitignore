@@ -13,4 +13,11 @@
 puma.state
 vendor/
 
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+
+.terraformrc
+terraform.rc
+
 my_application_0.0.1.zip
