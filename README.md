@@ -1,4 +1,5 @@
-# sinatra-api-base
+# puma-redeploy-test-app
+App used to test the [puma-redeploy](https://github.com/tbeauvais/puma-redeploy) gem.
 
 ## Running the App Locally
 The following step will walk you through building an application archive and running running the app in a docker container.
