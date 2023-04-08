@@ -10,7 +10,7 @@ The build container and runtime container are from dockerhub and were built usin
 This will place the application artifact in the current directory under `build/pkg`
 
 ```shell
-docker run -e ARCHIVE_NAME=test_app -e BRANCH_NAME=main -e REPO_NAME=tbeauvais/puma-redeploy-test-app -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
+docker run -e ARCHIVE_NAME=test_app -e BRANCH_NAME=master -e REPO_NAME=tbeauvais/puma-redeploy-test-app -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
 ```
 
 ### Create Local Watch File
