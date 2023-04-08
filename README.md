@@ -3,14 +3,14 @@ App used to test the [puma-redeploy](https://github.com/tbeauvais/puma-redeploy)
 
 ## Running the App Locally
 The following step will walk you through building an application archive and running running the app in a docker container.
-The build container and runtime container are from dockerhub and were built using the [Github action](https://github.com/tbeauvais/sinatra-api-base/actions) in this repo. However we will build the application archive zip locally.
+The build container and runtime container are from dockerhub and were built using the [Github action](https://github.com/tbeauvais/puma-redeploy-test-app/actions) in this repo. However we will build the application archive zip locally.
 
 
 ### Build an application archive using docker build container
 This will place the application artifact in the current directory under `build/pkg`
 
 ```shell
-docker run -e ARCHIVE_NAME=test_app -e BRANCH_NAME=main -e REPO_NAME=tbeauvais/sinatra-api-base -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
+docker run -e ARCHIVE_NAME=test_app -e BRANCH_NAME=main -e REPO_NAME=tbeauvais/puma-redeploy-test-app -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
 ```
 
 ### Create Local Watch File
@@ -54,7 +54,7 @@ Build the new archive from the branch with your change
 ```shell
 
 # build the archive for the docker runtime container
-docker run -e ARCHIVE_NAME=test_app -e BRANCH_NAME=add-ding -e REPO_NAME=tbeauvais/sinatra-api-base -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
+docker run -e ARCHIVE_NAME=test_app -e BRANCH_NAME=add-ding -e REPO_NAME=tbeauvais/puma-redeploy-test-app -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
 ```
 
 ### Touch the watch.me file
