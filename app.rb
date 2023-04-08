@@ -11,8 +11,8 @@ class App < Sinatra::Base
     JSON.generate({ message: 'pong' })
   end
 
-  # new endpoint for testing redeploy
-  # get '/ding' do
-  #   JSON.generate({ message: 'dong' })
-  # end
+  new endpoint for testing redeploy
+  get '/ding' do
+    JSON.generate({ message: 'dong' })
+  end
 end
