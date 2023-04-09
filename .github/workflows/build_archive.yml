@@ -18,8 +18,7 @@ jobs:
       -
         run: docker run -e ARCHIVE_NAME=${{ inputs.archive_name }} -e BRANCH_NAME=${{ github.ref_name }} -e REPO_NAME=${{ github.repository }} -v ${{ github.workspace }}/pkg:/build/pkg tbeauvais/archive-builder:latest
       -
-        name: Upload
-        uses: actions/upload-artifact@v3
+        name: Release Artifact
+        uses: ncipollo/release-action@v1
         with:
-          name: application-artifact
-          path: ${{ github.workspace }}/pkg
+          artifacts: "${{ github.workspace }}/pkg/*.zip"
