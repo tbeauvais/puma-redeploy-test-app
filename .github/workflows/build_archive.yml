@@ -21,4 +21,5 @@ jobs:
         name: Release Artifact
         uses: ncipollo/release-action@v1
         with:
+          tag: "0.0.1"
           artifacts: "${{ github.workspace }}/pkg/*.zip"
