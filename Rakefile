@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'rake/packagetask'
+require 'rake-version'
+
 
 # Rake::PackageTask.new("library", "1.0") do |pt|
 #   puts("Packaging library distribution artifact...")
@@ -38,3 +40,5 @@ task :build_archive, [:archive_name] => [:pkg, :bundle_gems] do |task, args|
 
   # sh 'bundle config unset BUNDLE_DEPLOYMENT'
 end
+
+RakeVersion::Tasks.new
