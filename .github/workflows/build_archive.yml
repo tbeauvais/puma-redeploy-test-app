@@ -30,13 +30,13 @@ jobs:
       - name: Bump Version
         run: |
           VERSION=$(rake version:bump:${{ inputs.version_level }})
-          echo $VERSION
+          echo "new_version=$VERSION" >> $GITHUB_ENV
       - name: Commit Version Bump
         run: |
-          echo $VERSION
+          echo ${{ env.new_version }}
           git config --global user.email "ciuser@githubaction.com"
           git config --global user.name "CI User"
-          git commit -am "CI bump app version to $VERSION"
+          git commit -am "CI bump app version to ${{ env.new_version }}"
       -
         run: mkdir pkg
       -
@@ -45,5 +45,5 @@ jobs:
         name: Release Artifact
         uses: ncipollo/release-action@v1
         with:
-          tag: $VERSION
+          tag: "v${{ env.new_version }}"
           artifacts: "${{ github.workspace }}/pkg/*.zip"
