@@ -26,10 +26,10 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
       - name: Install dependencies
-        run: bundle install
+        run: gem install rake rake-version
       - name: Bump Version
         run: |
-          VERSION=$(bundle exec rake version:bump:${{ inputs.version_level }})
+          VERSION=$(rake version:bump:${{ inputs.version_level }})
           echo $VERSION
       -
         run: mkdir pkg
