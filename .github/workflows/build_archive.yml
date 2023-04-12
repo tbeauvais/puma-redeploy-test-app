@@ -8,18 +8,43 @@ on:
         description: 'The archive name. This must be a valid file prefix.'
         required: true
         default: 'test_app'
+      version_level:
+        description: 'The semantic level for the version bump'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        required: true
+        default: 'patch'
 
 jobs:
   build-artifact:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+      - name: Install dependencies
+        run: gem install rake rake-version
+      - name: Bump Version
+        run: |
+          VERSION=$(rake version:bump:${{ inputs.version_level }})
+          echo "new_version=$VERSION" >> $GITHUB_ENV
+      - name: Commit Version Bump
+        run: |
+          echo ${{ env.new_version }}
+          git config --global user.email "ciuser@githubaction.com"
+          git config --global user.name "CI User"
+          git commit -am "CI bump app version to ${{ env.new_version }}"
+          git push origin
       -
         run: mkdir pkg
       -
         run: docker run -e ARCHIVE_NAME=${{ inputs.archive_name }} -e BRANCH_NAME=${{ github.ref_name }} -e REPO_NAME=${{ github.repository }} -v ${{ github.workspace }}/pkg:/build/pkg tbeauvais/archive-builder:latest
       -
-        name: Upload
-        uses: actions/upload-artifact@v3
+        name: Release Artifact
+        uses: ncipollo/release-action@v1
         with:
-          name: application-artifact
-          path: ${{ github.workspace }}/pkg
+          tag: "v${{ env.new_version }}"
+          artifacts: "${{ github.workspace }}/pkg/*.zip"
