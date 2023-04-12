@@ -37,6 +37,7 @@ jobs:
           git config --global user.email "ciuser@githubaction.com"
           git config --global user.name "CI User"
           git commit -am "CI bump app version to ${{ env.new_version }}"
+          git push origin
       -
         run: mkdir pkg
       -
