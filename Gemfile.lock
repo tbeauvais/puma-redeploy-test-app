@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/tbeauvais/puma-redeploy.git
-  revision: 7335c8dcbb78d7d130d0340b05bb3ae338c553a4
+  revision: 9b3f8af70b7942e3cd2b82b7f3bfb772dba92370
+  branch: load_archive_cli
   specs:
     puma-redeploy (0.1.0)
 
