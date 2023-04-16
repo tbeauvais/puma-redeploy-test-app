@@ -10,7 +10,7 @@ The build container and runtime container are from dockerhub and were built usin
 This will place the application artifact in the current directory under `build/pkg`
 
 ```shell
-docker run -e ARCHIVE_NAME=test_app -e BRANCH_NAME=master -e REPO_NAME=tbeauvais/puma-redeploy-test-app -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
+docker run --rm -e ARCHIVE_NAME=test_app -e BRANCH_NAME=master -e REPO_NAME=tbeauvais/puma-redeploy-test-app -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
 ```
 
 ### Create Local Watch File
@@ -24,8 +24,7 @@ The path is from the perspective of the docker container. For example:
 ### Start the Application
 When the app starts the run script within the docker container will unzip the archive before starting puma.
 ```shell
- docker run -p 3000:3000 -e WATCH_FILE=/app/pkg/watch.me -v $PWD/build/pkg:/app/pkg tbeauvais/app-runner:latest
-:latest
+docker run --rm -p 3000:3000 -e WATCH_FILE=/app/pkg/watch.me -v $PWD/build/pkg:/app/pkg tbeauvais/app-runner:latest
 ```
 
 ### Test endpoint
@@ -71,3 +70,18 @@ Open a browser and hit http://localhost:3000/ping
 
 This endpoint should now work!
 Open a browser and hit http://localhost:3000/ding
+
+## Miscellaneous Commands
+
+### Re-fetch Docker Images Locally
+If you rebuild the images using the Github actions you will need to pull down the new version.
+
+The archive builder image
+```shell
+docker pull tbeauvais/archive-builder:latest
+```
+
+The application runtime image
+```shell
+docker pull tbeauvais/app-runner:latest
+```
