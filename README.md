@@ -71,3 +71,18 @@ Open a browser and hit http://localhost:3000/ping
 
 This endpoint should now work!
 Open a browser and hit http://localhost:3000/ding
+
+## Miscellaneous Commands
+
+### Re-fetch Docker Images Locally
+If you rebuild the images using the Github actions you will need to pull down the new version.
+
+The archive builder image
+```shell
+docker pull tbeauvais/archive-builder:latest
+```
+
+The application runtime image
+```shell
+docker pull tbeauvais/app-runner:latest
+```
