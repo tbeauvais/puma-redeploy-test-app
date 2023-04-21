@@ -11,6 +11,7 @@
 .rspec_status
 .DS_Store
 puma.state
+S3.env
 vendor/
 
 **/.terraform/*
@@ -20,4 +21,4 @@ vendor/
 .terraformrc
 terraform.rc
 
-my_application_0.0.1.zip
+build/
