@@ -15,17 +15,32 @@ docker run --rm -e ARCHIVE_NAME=test_app -e BRANCH_NAME=master -e REPO_NAME=tbea
 
 ### Create Local Watch File
 Create a `watch.me` file in the `build/pkg` folder where its contents is the path to the application archive created above.
-The path is from the perspective of the docker container. For example:
+The path is from the perspective of the docker container. 
 
+For example when using the puma-redeploy file handler the `watch.me` contents would look like the following.
 ```shell
-/app/pkg/test_app_0.0.1.zip
+/app/pkg/test_app_0.0.3.zip
+```
+
+For example when using the puma-redeploy with a S3 handler the `watch.me` contents would look like the following. In this case the `test_app_0.0.3.zip` must exist in the `puma-test-app-archives` S3 bucket.
+```shell
+s3://puma-test-app-archives/test_app_0.0.3.zip
 ```
 
 ### Start the Application
-When the app starts the run script within the docker container will unzip the archive before starting puma.
+When the container starts, the `run.sh` script within the docker runtime container will use the `load_archive` cli from the `puma-redeploy` gem to deploy the archive before starting the puma server.
+
+When using the file handler you will set the WATCH_FILE environment variable to the location of the `watch.me` from the perspective of the running container.
 ```shell
 docker run --rm -p 3000:3000 -e WATCH_FILE=/app/pkg/watch.me -v $PWD/build/pkg:/app/pkg tbeauvais/app-runner:latest
 ```
+
+When using the S3 handler you will set the `WATCH_FILE` environment variable to the location of the `watch.me` in S3. Be sure to also set the AWS credentials environment variables.
+See the `s3.env.template`. You can copy this template to `s3.env` and set the proper `WATCH_FILE` and AWS credentials for accessing S3.
+```shell
+docker run --rm -p 3000:3000 --env-file s3.env -v $PWD/build/pkg:/app/pkg tbeauvais/app-runner:latest
+```
+
 
 ### Test endpoint
 
