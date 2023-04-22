@@ -1,0 +1,27 @@
+[
+  {
+    "name": "sample-app",
+    "image": "${app_image}",
+    "cpu": ${fargate_cpu},
+    "memory": ${fargate_memory},
+    "networkMode": "awsvpc",
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/sample-app",
+          "awslogs-region": "${aws_region}",
+          "awslogs-stream-prefix": "ecs"
+        }
+    },
+    "portMappings": [
+      {
+        "containerPort": ${container_port},
+        "hostPort": ${container_port}
+      }
+    ],
+    "environment": [
+        { "name" : "WATCH_FILE", "value" : "s3://puma-test-app-archives/watch.me" },
+        { "name" : "AWS_DEFAULT_REGION", "value" : "us-east-1" }
+      ]
+  }
+]

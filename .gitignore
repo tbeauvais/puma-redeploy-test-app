@@ -14,4 +14,12 @@ puma.state
 S3.env
 vendor/
 
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+**/.terraform.lock.hcl
+
+.terraformrc
+terraform.rc
+
 build/
