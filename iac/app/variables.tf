@@ -7,7 +7,7 @@ variable "aws_region" {
 
 variable "ecs_task_execution_role_name" {
   description = "ECS task execution role name"
-  default = "myEcsTaskExecutionRole"
+  default = "appEcsTaskExecutionRole"
 }
 
 variable "az_count" {
@@ -17,21 +17,25 @@ variable "az_count" {
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "nginxdemos/hello"
+  default     = "tbeauvais/app-runner:latest"
 }
 
 variable "app_port" {
-  description = "Port exposed by the docker image to redirect traffic to"
+  description = "Port exposed by the load balancer"
   default     = 80
 }
 
+variable "container_port" {
+  description = "Port exposed by the docker image to redirect traffic to"
+  default     = 3000
+}
 variable "app_count" {
   description = "Number of docker containers to run"
   default     = 1
 }
 
 variable "health_check_path" {
-  default = "/"
+  default = "/ping"
 }
 
 variable "fargate_cpu" {

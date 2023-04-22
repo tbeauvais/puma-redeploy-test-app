@@ -17,6 +17,7 @@ vendor/
 **/.terraform/*
 *.tfstate
 *.tfstate.*
+**/.terraform.lock.hcl
 
 .terraformrc
 terraform.rc

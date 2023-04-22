@@ -10,6 +10,6 @@ terraform {
 }
 
 provider "aws" {
-  profile = "tomb_secondary"
+  profile = "app_deployer"
   region  = "us-east-1"
 }
