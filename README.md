@@ -47,6 +47,9 @@ docker run --rm -p 3000:3000 --env-file s3.env -v $PWD/build/pkg:/app/pkg tbeauv
 This endpoint does exist
 Open a browser and hit http://localhost:3000/ping
 
+Check version
+Open a browser and hit http://localhost:3000/version
+
 This endpoint does not exist
 Open a browser and hit http://localhost:3000/ding
 
@@ -82,6 +85,9 @@ touch build.pkg/watch.me
 
 This endpoint does exist
 Open a browser and hit http://localhost:3000/ping
+
+Check version(should have new version after redeploy)
+Open a browser and hit http://localhost:3000/version
 
 This endpoint should now work!
 Open a browser and hit http://localhost:3000/ding
