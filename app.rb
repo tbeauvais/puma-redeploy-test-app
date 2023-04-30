@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-require 'sinatra'
+require 'bundler/setup'
 require 'json'
 require 'sidekiq'
 require_relative 'lib/workers/sample_worker'
+require 'sinatra'
 
 require 'pry' if %w[development test].include? ENV['RACK_ENV']
 
