@@ -17,6 +17,7 @@ RUN chmod +x ./run.sh
 
 RUN gem install puma-redeploy
 RUN gem install sidekiq-redeploy
+RUN gem install nokogiri
 
 # locate of vendor gems from archive
 ENV GEM_PATH=$GEM_HOME:/app/vendor/bundle/ruby/3.2.0
