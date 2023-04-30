@@ -5,8 +5,8 @@
 load_archive /app "$WATCH_FILE"
 
 # Load gems from vendor/bundle
-export GEM_HOME=/app/vendor/bundle/ruby/3.2.0
-export PATH=$PATH:/app/vendor/bundle/ruby/3.2.0/bin
+# export GEM_HOME=/app/vendor/bundle/ruby/3.2.0
+# export PATH=$PATH:/app/vendor/bundle/ruby/3.2.0/bin
 
 if [ "$APP" = "sidekiq" ]
 then
