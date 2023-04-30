@@ -16,6 +16,7 @@ WORKDIR $APP_HOME
 RUN chmod +x ./run.sh
 
 RUN gem install puma-redeploy
+RUN gem install sidekiq-redeploy
 
 EXPOSE 3000
 
