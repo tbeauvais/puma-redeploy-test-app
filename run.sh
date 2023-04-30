@@ -8,4 +8,9 @@ load_archive /app "$WATCH_FILE"
 export GEM_HOME=/app/vendor/bundle/ruby/3.2.0
 export PATH=$PATH:/app/vendor/bundle/ruby/3.2.0/bin
 
-bundle exec puma -C config/puma.rb
+if [ "$APP" = "sidekiq" ]
+then
+  bundle exec sidekiq-loader -w "$WATCH_FILE" -a /app -y 15
+else
+  bundle exec puma -C config/puma.rb
+fi
