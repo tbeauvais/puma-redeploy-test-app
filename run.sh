@@ -10,7 +10,7 @@ export PATH=$PATH:/app/vendor/bundle/ruby/3.2.0/bin
 
 if [ "$APP" = "sidekiq" ]
 then
-  bundle exec sidekiq-loader -w "$WATCH_FILE" -a /app -y 15
+  bundle exec sidekiq-loader -w "$WATCH_FILE" -a /app -s ./app.rb -y 15
 else
   bundle exec puma -C config/puma.rb
 fi
