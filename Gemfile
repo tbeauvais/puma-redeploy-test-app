@@ -7,6 +7,8 @@ gem 'puma-redeploy', '~> 0.2.1'
 gem 'rubocop', '~> 1.42'
 gem 'sinatra', '~> 3.0', '>= 3.0.5'
 gem "rake-version", "~> 1.0"
+gem 'sidekiq', '~> 6.5', '>= 6.5.8'
+gem 'sidekiq-redeploy', '0.1.0'
 
 group :test do
   gem 'rack-test', '~> 1.1'

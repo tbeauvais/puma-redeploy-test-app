@@ -2,6 +2,8 @@
 
 require 'sinatra'
 require 'json'
+require 'sidekiq'
+require_relative 'lib/workers/sample_worker'
 
 require 'pry' if %w[development test].include? ENV['RACK_ENV']
 
@@ -15,6 +17,10 @@ class App < Sinatra::Base
 
   get '/version' do
     JSON.generate({ version: VERSION })
+  end
+
+  get '/worker' do
+    SampleWorker.perform_async
   end
 
   # new endpoint for testing redeploy
