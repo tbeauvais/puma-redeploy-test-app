@@ -16,6 +16,5 @@ group :test do
 end
 
 group :development, :test do
-  gem 'pry', '~> 0.12.2'
   gem 'rake', '~> 13.0', '>= 13.0.6'
 end
