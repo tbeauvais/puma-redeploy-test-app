@@ -5,6 +5,7 @@ git clone --depth 1 -b "${BRANCH_NAME}" --single-branch https://github.com/"$REP
 # shellcheck disable=SC2164
 cd "${ARCHIVE_NAME}"
 
+bundle lock --add-platform aarch64-linux-musl
 bundle config timeout 30
 bundle config deployment 'true'
 bundle config retry 4
