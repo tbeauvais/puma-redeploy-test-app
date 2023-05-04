@@ -29,7 +29,7 @@ extra_runtime_dependencies 'puma-redeploy'
 
 plugin :redeploy
 
-redeploy_watch_file ENV['WATCH_FILE']
+redeploy_watch_file ENV.fetch('WATCH_FILE', nil)
 
 # the number of seconds between checking watch file. defaults to 30.
 redeploy_watch_delay 5

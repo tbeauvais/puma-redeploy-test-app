@@ -2,6 +2,7 @@
 
 require 'json'
 require 'sidekiq'
+require_relative 'lib/sidekiq_client'
 require_relative 'lib/workers/sample_worker'
 require 'sinatra'
 
