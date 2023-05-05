@@ -31,7 +31,7 @@ task :build_archive, [:archive_name] => %i[pkg bundle_gems] do |task, args|
   puts "archive_name '#{archive_name}'"
 
   # Create an array of the files and directories to include in the archive
-  files_to_include = %w[app.rb sidekiq_server.rb VERSION lib/ config/ vendor/bundle/ config.ru .ruby-version Gemfile
+  files_to_include = %w[app.rb VERSION lib/ config/ vendor/bundle/ config.ru .ruby-version Gemfile
                         Gemfile.lock .bundle/]
 
   # Use the `zip` command to create the archive
