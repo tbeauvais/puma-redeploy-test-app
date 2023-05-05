@@ -1,5 +1,5 @@
 # puma-redeploy-test-app
-App used to test the [puma-redeploy](https://github.com/tbeauvais/puma-redeploy) gem.
+Example app using the [puma-redeploy](https://github.com/tbeauvais/puma-redeploy) and [sidekiq-redeploy](https://github.com/tbeauvais/sidekiq-redeploy) gems to show how to redeploy the apps in a containerized environment(e.g. AWS ECS) without stopping or redeploying the container.
 
 ## Running the App Locally
 The following step will walk you through building an application archive and running running the app in a docker container.
