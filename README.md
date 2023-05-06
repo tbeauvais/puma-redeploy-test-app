@@ -37,6 +37,11 @@ When using the file handler you will set the WATCH_FILE environment variable to 
 docker run --rm -p 3000:3000 -e WATCH_FILE=/app/pkg/watch.me -v $PWD/build/pkg:/app/pkg tbeauvais/app-runner:latest
 ```
 
+You can also pass in the commands to run at startup. This allow puma to run as PID 1, so it will handle the shutdown signal.
+```shell
+docker run --rm -p 3000:3000 -e WATCH_FILE=/app/pkg/watch.me -v $PWD/build/pkg:/app/pkg tbeauvais/app-runner:latest sh -c "archive-loader -a /app -w /app/pkg/watch.me && bundle exec puma -C config/puma.rb"
+```
+
 When using the S3 handler you will set the `WATCH_FILE` environment variable to the location of the `watch.me` in S3. Be sure to also set the AWS credentials environment variables.
 See the `s3.env.template`. You can copy this template to `s3.env` and set the proper `WATCH_FILE` and AWS credentials for accessing S3.
 ```shell
