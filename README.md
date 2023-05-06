@@ -15,6 +15,10 @@ This will place the application artifact in the current directory under `build/p
 docker run --rm -e ARCHIVE_NAME=test_app -e BRANCH_NAME=master -e REPO_NAME=tbeauvais/puma-redeploy-test-app -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
 ```
 
+```shell
+docker run -it -v $PWD/build/pkg:/build/pkg -v $PWD:/app tbeauvais/archive-builder:latest sh -c "./build_local.sh"
+```
+
 ### Create Local Watch File
 Create a `watch.me` file in the `build/pkg` folder where its contents is the path to the application archive created above.
 The path is from the perspective of the docker container. 
