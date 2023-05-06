@@ -1,6 +1,6 @@
 #!/bin/ash
 
-# load_archive is a puma-redeploy cli tool to load the archive prior to starting puma
-load_archive /app "$WATCH_FILE"
+# archive-loader is a puma-redeploy cli tool to load the archive prior to starting puma
+archive-loader -a /app -w "$WATCH_FILE"
 
 bundle exec puma -C config/puma.rb

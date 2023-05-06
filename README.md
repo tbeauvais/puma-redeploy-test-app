@@ -30,7 +30,7 @@ s3://puma-test-app-archives/test_app_0.0.3.zip
 ```
 
 ### Start the Application
-When the container starts, the `run.sh` script within the docker runtime container will use the `load_archive` cli from the `puma-redeploy` gem to deploy the archive before starting the puma server.
+When the container starts, the `run.sh` script within the docker runtime container will use the `archive-loader` cli from the `puma-redeploy` gem to deploy the archive before starting the puma server.
 
 When using the file handler you will set the WATCH_FILE environment variable to the location of the `watch.me` from the perspective of the running container.
 ```shell
