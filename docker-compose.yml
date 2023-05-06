@@ -2,6 +2,7 @@ version: '3.7'
 services:
   app:
     image: tbeauvais/app-runner:latest
+    command: sh -c "load_archive /app /app/pkg/watch.me && bundle exec puma -C config/puma.rb"
     ports:
       - "127.0.0.1:3000:3000"
     expose:
