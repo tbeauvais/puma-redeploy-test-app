@@ -17,7 +17,7 @@ docker run --rm -e ARCHIVE_NAME=test_app -e BRANCH_NAME=master -e REPO_NAME=tbea
 
 To build from local source use this command which will map the local app to the docker /app folder. 
 ```shell
-docker run -it -v $PWD/build/pkg:/build/pkg -v $PWD:/app tbeauvais/archive-builder:latest sh -c "./build_local.sh"
+docker run --rm -e ARCHIVE_NAME=test_app -v $PWD/build/pkg:/build/pkg -v $PWD:/app tbeauvais/archive-builder:latest ./build_local.sh
 ```
 
 ### Create Local Watch File
