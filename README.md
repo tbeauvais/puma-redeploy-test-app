@@ -15,6 +15,7 @@ This will place the application artifact in the current directory under `build/p
 docker run --rm -e ARCHIVE_NAME=test_app -e BRANCH_NAME=master -e REPO_NAME=tbeauvais/puma-redeploy-test-app -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
 ```
 
+To build from local source use this command which will map the local app to the docker /app folder. 
 ```shell
 docker run -it -v $PWD/build/pkg:/build/pkg -v $PWD:/app tbeauvais/archive-builder:latest sh -c "./build_local.sh"
 ```

@@ -1,5 +1,7 @@
 #!/bin/ash
 
+
+bundle lock --add-platform x86_64-linux-musl
 bundle config timeout 30
 bundle config deployment 'true'
 bundle config retry 4
