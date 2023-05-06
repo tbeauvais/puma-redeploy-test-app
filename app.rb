@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-require 'sinatra'
 require 'json'
-
-require 'pry' if %w[development test].include? ENV['RACK_ENV']
+require 'sidekiq'
+require_relative 'lib/sidekiq_client'
+require_relative 'lib/workers/sample_worker'
+require 'sinatra'
 
 # app for testing puma reloader
 class App < Sinatra::Base
@@ -15,6 +16,10 @@ class App < Sinatra::Base
 
   get '/version' do
     JSON.generate({ version: VERSION })
+  end
+
+  get '/worker' do
+    SampleWorker.perform_async
   end
 
   # new endpoint for testing redeploy

@@ -1,5 +1,5 @@
 # puma-redeploy-test-app
-App used to test the [puma-redeploy](https://github.com/tbeauvais/puma-redeploy) gem.
+Example app using the [puma-redeploy](https://github.com/tbeauvais/puma-redeploy) and [sidekiq-redeploy](https://github.com/tbeauvais/sidekiq-redeploy) gems to show how to redeploy the apps in a containerized environment(e.g. AWS ECS) without stopping or redeploying the container.
 
 ## Running the App Locally
 The following step will walk you through building an application archive and running running the app in a docker container.
@@ -8,6 +8,8 @@ The build container and runtime container are from dockerhub and were built usin
 
 ### Build an application archive using docker build container
 This will place the application artifact in the current directory under `build/pkg`
+
+**Note** - This is building from the github repo, so local changes will not be picked up. 
 
 ```shell
 docker run --rm -e ARCHIVE_NAME=test_app -e BRANCH_NAME=master -e REPO_NAME=tbeauvais/puma-redeploy-test-app -v $PWD/build/pkg:/build/pkg tbeauvais/archive-builder:latest
@@ -91,6 +93,25 @@ Open a browser and hit http://localhost:3000/version
 
 This endpoint should now work!
 Open a browser and hit http://localhost:3000/ding
+
+
+## Launch With Docker Compose
+You can use the docker compose file to launch the web app, sidekiq server, and redis.
+
+```shell
+docker compose up
+```
+
+### Test endpoint
+
+Test `ping` endpoint
+
+Open a browser and hit http://localhost:3000/ping
+
+This endpoint will kick off the sidekiq worker. You should see its output in the logs when it runs.
+
+Open a browser and hit http://localhost:3000/worker
+
 
 ## Miscellaneous Commands
 

@@ -3,7 +3,6 @@
 require 'rake/packagetask'
 require 'rake-version'
 
-
 # Rake::PackageTask.new("library", "1.0") do |pt|
 #   puts("Packaging library distribution artifact...")
 #   pt.need_zip = true
@@ -23,7 +22,7 @@ task :bundle_gems do
 end
 
 desc 'Build the application archive'
-task :build_archive, [:archive_name] => [:pkg, :bundle_gems] do |task, args|
+task :build_archive, [:archive_name] => %i[pkg bundle_gems] do |task, args|
   version = File.read('VERSION').strip
   puts "version '#{version}' task #{task}"
   # Set the name of the archive file
@@ -32,8 +31,8 @@ task :build_archive, [:archive_name] => [:pkg, :bundle_gems] do |task, args|
   puts "archive_name '#{archive_name}'"
 
   # Create an array of the files and directories to include in the archive
-  files_to_include = %w[app.rb VERSION config/ vendor/bundle/ config.ru .ruby-version Gemfile Gemfile.lock
-                        .bundle/]
+  files_to_include = %w[app.rb VERSION lib/ config/ vendor/bundle/ config.ru .ruby-version Gemfile
+                        Gemfile.lock .bundle/]
 
   # Use the `zip` command to create the archive
   sh "zip -r #{archive_name} #{files_to_include.join(' ')}"

@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  app:
+    image: tbeauvais/app-runner:latest
+    command: sh -c "load_archive /app /app/pkg/watch.me && bundle exec puma -C config/puma.rb"
+    ports:
+      - "127.0.0.1:3000:3000"
+    expose:
+      - "3000"
+    environment:
+      - WATCH_FILE=/app/pkg/watch.me
+      - REDIS_HOST=redis
+    volumes:
+      - "./build/pkg:/app/pkg"
+  sidekiq:
+    image: tbeauvais/app-runner:latest
+    command: "sidekiq-loader -a /app -w /app/pkg/watch.me -s /app/lib/sidekiq_server.rb -y 30"
+    environment:
+      - REDIS_HOST=redis
+    volumes:
+      - "./build/pkg:/app/pkg"
+
+  redis:
+    image: redis:7.0.11-alpine
+    command: redis-server
+    ports:
+      - "127.0.0.1:6379:6379"
