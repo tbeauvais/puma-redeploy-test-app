@@ -38,6 +38,14 @@ variable "health_check_path" {
   default = "/ping"
 }
 
+variable "app_folder" {
+  default = "/app"
+}
+
+variable "watch_file" {
+  default = "s3://puma-test-app-archives/s3_watch.me"
+}
+
 variable "fargate_cpu" {
   description = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
   default     = "1024"

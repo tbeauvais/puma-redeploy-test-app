@@ -14,7 +14,7 @@ services:
       - "./build/pkg:/app/pkg"
   sidekiq:
     image: tbeauvais/app-runner:latest
-    command: "sidekiq-loader -a /app -w /app/pkg/watch.me -s /app/lib/sidekiq_server.rb -y 30"
+    command: ["sidekiq-loader", "-a", "/app", "-w", "/app/pkg/watch.me", "-s", "/app/lib/sidekiq_server.rb", "-y", "30"]
     environment:
       - REDIS_HOST=redis
     volumes:

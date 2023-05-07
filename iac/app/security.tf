@@ -39,3 +39,32 @@ resource "aws_security_group" "ecs_tasks" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+# REDIS
+
+resource "aws_security_group" "redis" {
+  name_prefix = "-"
+  vpc_id      = aws_vpc.main.id
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_security_group_rule" "redis_ingress_cidr_blocks" {
+  type              = "ingress"
+  from_port         = 6379
+  to_port           = 6379
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.redis.id
+}
+
+resource "aws_security_group_rule" "redis_egress" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.redis.id
+}
