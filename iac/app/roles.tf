@@ -29,3 +29,9 @@ resource "aws_iam_role_policy_attachment" "ecs_s3_read_only" {
   role       = aws_iam_role.ecs_task_execution_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 }
+
+# Needed for session manager to shell into container
+resource "aws_iam_role_policy_attachment" "ecs_ssm_full_access" {
+  role       = aws_iam_role.ecs_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
+}
