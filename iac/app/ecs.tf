@@ -83,6 +83,8 @@ resource "aws_ecs_service" "sidekiq_service" {
   task_definition = aws_ecs_task_definition.sidekiq_task_def.arn
   desired_count   = var.app_count
   launch_type     = "FARGATE"
+  # Required to shell into container using aws ecs execute-command ...
+  enable_execute_command = true
 
   network_configuration {
     security_groups  = [aws_security_group.ecs_tasks.id]
