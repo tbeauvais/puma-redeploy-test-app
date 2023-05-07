@@ -1,0 +1,23 @@
+[
+  {
+    "name": "sidekiq-app",
+    "image": "${app_image}",
+    "command": ["sidekiq-loader", "-a", "${app_folder}", "-w", "${watch_file}", "-s", "/app/lib/sidekiq_server.rb", "-y", "30"],
+    "cpu": ${fargate_cpu},
+    "memory": ${fargate_memory},
+    "networkMode": "awsvpc",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/sample-app",
+        "awslogs-region": "${aws_region}",
+        "awslogs-stream-prefix": "ecs"
+      }
+    },
+    "environment": [
+      { "name" : "WATCH_FILE", "value" : "${watch_file}" },
+      { "name" : "REDIS_HOST", "value" : "${redis_endpoint}" },
+      { "name" : "AWS_DEFAULT_REGION", "value" : "us-east-1" }
+    ]
+  }
+]
