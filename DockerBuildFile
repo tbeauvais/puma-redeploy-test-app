@@ -13,13 +13,14 @@ RUN mkdir $APP_HOME
 RUN mkdir $APP_HOME/pkg
 
 COPY build.sh $APP_HOME
+COPY build_local.sh $APP_HOME
 
 WORKDIR $APP_HOME
 
 RUN chmod +x ./build.sh
+RUN chmod +x ./build_local.sh
 
 RUN gem install rake
 RUN gem install rake-version
 
-#ENTRYPOINT ["./build.sh"]
 CMD ["./build.sh"]

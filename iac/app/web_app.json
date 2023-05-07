@@ -2,6 +2,7 @@
   {
     "name": "sample-app",
     "image": "${app_image}",
+    "command": ["sh", "-c", "archive-loader -a ${app_folder} -w ${watch_file} && bundle exec puma -C config/puma.rb"],
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
     "networkMode": "awsvpc",
@@ -20,7 +21,8 @@
       }
     ],
     "environment": [
-        { "name" : "WATCH_FILE", "value" : "s3://puma-test-app-archives/watch.me" },
+        { "name" : "WATCH_FILE", "value" : "${watch_file}" },
+        { "name" : "REDIS_HOST", "value" : "${redis_endpoint}" },
         { "name" : "AWS_DEFAULT_REGION", "value" : "us-east-1" }
       ]
   }
