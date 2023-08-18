@@ -28,7 +28,7 @@ GEM
     parallel (1.23.0)
     parser (3.2.2.1)
       ast (~> 2.4.1)
-    puma (6.2.2)
+    puma (6.3.1)
       nio4r (~> 2.0)
     puma-redeploy (0.3.0)
       aws-sdk-s3 (~> 1.120.0)
@@ -88,10 +88,11 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
   x86_64-linux-musl
 
 DEPENDENCIES
-  puma (~> 6.1, >= 6.1.1)
+  puma (~> 6.3)
   puma-redeploy (~> 0.3.0)
   rack-test (~> 1.1)
   rake (~> 13.0, >= 13.0.6)
