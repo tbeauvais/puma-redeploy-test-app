@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'puma', '~> 6.1', '>= 6.1.1'
+gem 'puma', '~> 6.3'
 gem 'puma-redeploy', '~> 0.3.0'
 gem 'rake-version', '~> 1.0'
 gem 'rubocop', '~> 1.42'
