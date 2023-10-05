@@ -6,7 +6,7 @@ gem 'puma', '~> 6.1', '>= 6.1.1'
 gem 'puma-redeploy', '~> 0.3.0'
 gem 'rake-version', '~> 1.0'
 gem 'rubocop', '~> 1.42'
-gem 'sidekiq', '~> 6.5', '>= 6.5.8'
+gem 'sidekiq', '~> 6.5'
 gem 'sidekiq-redeploy', '0.1.2'
 gem 'sinatra', '~> 3.0', '>= 3.0.5'
 
